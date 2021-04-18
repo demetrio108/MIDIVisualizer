@@ -2,10 +2,10 @@
 #include <iostream>
 #include <vector>
 
-#include "ResourcesManager.h"
-#include "ProgramUtilities.h"
+#include "helpers/ResourcesManager.h"
+#include "helpers/ProgramUtilities.h"
 // Resources headers.
-#include "../resources/data.h"
+#include "resources/data.h"
 
  unsigned char* ResourcesManager::getDataForImage(const std::string & fileName, unsigned int & imwidth, unsigned int & imheight){
 	

@@ -1,7 +1,7 @@
 #ifndef MIDI_BASE_H
 #define MIDI_BASE_H
 
-#include "MIDIUtils.h"
+#include "midi/MIDIUtils.h"
 
 struct MIDINote {
 

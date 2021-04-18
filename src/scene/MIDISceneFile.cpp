@@ -4,10 +4,10 @@
 #include <algorithm>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "../../helpers/ProgramUtilities.h"
-#include "../../helpers/ResourcesManager.h"
+#include "helpers/ProgramUtilities.h"
+#include "helpers/ResourcesManager.h"
 
-#include "MIDISceneFile.h"
+#include "scene/MIDISceneFile.h"
 
 #ifdef _WIN32
 #undef MIN

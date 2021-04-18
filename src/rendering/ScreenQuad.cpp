@@ -2,10 +2,10 @@
 #include <iostream>
 #include <vector>
 
-#include "../helpers/ProgramUtilities.h"
-#include "../helpers/ResourcesManager.h"
+#include "helpers/ProgramUtilities.h"
+#include "helpers/ResourcesManager.h"
 
-#include "ScreenQuad.h"
+#include "rendering/ScreenQuad.h"
 
 ScreenQuad::ScreenQuad(){}
 

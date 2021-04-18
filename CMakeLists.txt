@@ -123,6 +123,8 @@ set(LibSources
 )
 
 set(Sources
+	"src/State.cpp"
+	"src/State.h"
 	"src/helpers/ProgramUtilities.cpp"
 	"src/helpers/ProgramUtilities.h"
 	"src/helpers/ResourcesManager.cpp"
@@ -143,22 +145,22 @@ set(Sources
 	"src/rendering/Score.h"
 	"src/rendering/Framebuffer.cpp"
 	"src/rendering/Framebuffer.h"
-	"src/rendering/scene/MIDIScene.cpp"
-	"src/rendering/scene/MIDIScene.h"
-	"src/rendering/scene/MIDISceneFile.cpp"
-	"src/rendering/scene/MIDISceneFile.h"
-	"src/rendering/scene/MIDISceneLive.cpp"
-	"src/rendering/scene/MIDISceneLive.h"
 	"src/rendering/Renderer.cpp"
 	"src/rendering/Renderer.h"
 	"src/rendering/ScreenQuad.cpp"
 	"src/rendering/ScreenQuad.h"
-	"src/rendering/State.cpp"
-	"src/rendering/State.h"
 	"src/rendering/camera/Camera.cpp"
 	"src/rendering/camera/Camera.h"
 	"src/rendering/camera/Keyboard.cpp"
 	"src/rendering/camera/Keyboard.h"
+	"src/scene/MIDIScene.cpp"
+	"src/scene/MIDIScene.h"
+	"src/scene/MIDISceneFile.cpp"
+	"src/scene/MIDISceneFile.h"
+	"src/scene/MIDISceneLive.cpp"
+	"src/scene/MIDISceneLive.h"
+	"src/scene/MIDIPlayer.cpp"
+	"src/scene/MIDIPlayer.h"
 	"src/resources/meshes.h"
 	"src/resources/meshes.cpp"
 	"src/resources/data.h"
@@ -175,7 +177,7 @@ source_group(TREE ${PROJECT_SOURCE_DIR}/resources FILES ${Shaders})
 
 add_executable(MIDIVisualizer ${LibSources} ${Sources} ${Shaders})
 
-target_include_directories(MIDIVisualizer PRIVATE src/libs/ src/helpers/)
+target_include_directories(MIDIVisualizer PRIVATE src/libs/ src/)
 target_link_libraries(MIDIVisualizer PRIVATE nfd glfw RtMidi17 ${GLFW_LIBRARIES} ${OPENGL_gl_LIBRARY})
 add_dependencies(MIDIVisualizer Packaging)
 

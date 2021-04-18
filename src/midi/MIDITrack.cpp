@@ -1,7 +1,7 @@
 #include <tuple>
 #include <cmath>
 #include <algorithm>
-#include "MIDITrack.h"
+#include "midi/MIDITrack.h"
 
 // We will have to keep track of active notes per-channel.
 struct NoteKey {

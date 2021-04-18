@@ -2,9 +2,9 @@
 #define MIDISceneLive_h
 #include <gl3w/gl3w.h>
 #include <glm/glm.hpp>
-#include "../midi/MIDIBase.h"
-#include "../State.h"
-#include "MIDIScene.h"
+#include "midi/MIDIBase.h"
+#include "State.h"
+#include "scene/MIDIScene.h"
 
 #include <rtmidi17/rtmidi17.hpp>
 #include <map>

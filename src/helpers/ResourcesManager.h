@@ -7,7 +7,7 @@
 #include <glm/glm.hpp>
 #include <gl3w/gl3w.h>
 
-#include "../resources/meshes.h"
+#include "resources/meshes.h"
 
 class ResourcesManager {
 

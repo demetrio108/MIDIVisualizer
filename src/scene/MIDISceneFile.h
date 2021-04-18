@@ -2,9 +2,9 @@
 #define MIDISceneFile_h
 #include <gl3w/gl3w.h>
 #include <glm/glm.hpp>
-#include "../midi/MIDIFile.h"
-#include "../State.h"
-#include "MIDIScene.h"
+#include "midi/MIDIFile.h"
+#include "State.h"
+#include "scene/MIDIScene.h"
 
 class MIDISceneFile : public MIDIScene {
 

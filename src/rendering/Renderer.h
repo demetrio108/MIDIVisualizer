@@ -6,13 +6,13 @@
 #include <memory>
 #include <array>
 
-#include "Framebuffer.h"
-#include "camera/Camera.h"
-#include "scene/MIDIScene.h"
-#include "ScreenQuad.h"
-#include "Score.h"
+#include "rendering/Framebuffer.h"
+#include "rendering/camera/Camera.h"
+#include "rendering/ScreenQuad.h"
+#include "rendering/Score.h"
 
-#include "../helpers/Recorder.h"
+#include "scene/MIDIScene.h"
+#include "helpers/Recorder.h"
 
 #include "State.h"
 

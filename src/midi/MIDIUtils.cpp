@@ -1,4 +1,4 @@
-#include "MIDIUtils.h"
+#include "midi/MIDIUtils.h"
 
 std::unordered_map<MIDIEventType, std::string> MIDIEventTypeName = {
 	{ noteOff, "noteOff"},

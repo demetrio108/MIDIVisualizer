@@ -2,7 +2,7 @@
 #include <iterator>
 #include <fstream>
 
-#include "MIDIFile.h"
+#include "midi/MIDIFile.h"
 
 #ifdef _WIN32
 #define NOMINMAX

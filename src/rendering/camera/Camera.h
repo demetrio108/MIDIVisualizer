@@ -2,7 +2,7 @@
 #define Camera_h
 
 #include <glm/glm.hpp>
-#include "Keyboard.h"
+#include "rendering/camera/Keyboard.h"
 
 enum class MouseMode {
 	Start, Move, End

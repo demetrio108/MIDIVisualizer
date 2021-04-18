@@ -1,7 +1,7 @@
 #ifndef MIDI_TRACK_H
 #define MIDI_TRACK_H
 
-#include "MIDIBase.h"
+#include "midi/MIDIBase.h"
 
 typedef std::array<ActiveNoteInfos, 128> ActiveNotesArray;
 

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "Camera.h"
+#include "rendering/camera/Camera.h"
 
 
 Camera::Camera() : _keyboard(_eye, _center, _up, _right) {

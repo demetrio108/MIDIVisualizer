@@ -3,7 +3,7 @@
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "Keyboard.h"
+#include "rendering/camera/Keyboard.h"
 
 Keyboard::Keyboard(glm::vec3 & eye, glm::vec3 & center, glm::vec3 & up, glm::vec3 & right) : _eye(eye), _center(center), _up(up), _right(right) {
 	_speed = 1.2f;

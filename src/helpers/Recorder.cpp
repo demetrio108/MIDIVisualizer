@@ -1,5 +1,5 @@
-#include "Recorder.h"
-#include "../rendering/State.h"
+#include "helpers/Recorder.h"
+#include "State.h"
 
 #include <imgui/imgui.h>
 #include <nfd.h>

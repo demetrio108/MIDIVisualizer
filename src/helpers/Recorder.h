@@ -2,7 +2,8 @@
 #define Recorder_h
 
 #include <gl3w/gl3w.h>
-#include "../rendering/Framebuffer.h"
+#include "rendering/Framebuffer.h"
+
 #include <string>
 #include <vector>
 #include <memory>

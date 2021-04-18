@@ -1,9 +1,9 @@
 #ifndef MIDI_FILE_H
 #define MIDI_FILE_H
 
-#include "MIDIUtils.h"
-#include "MIDIBase.h"
-#include "MIDITrack.h"
+#include "midi/MIDIUtils.h"
+#include "midi/MIDIBase.h"
+#include "midi/MIDITrack.h"
 
 class MIDIFile {
 

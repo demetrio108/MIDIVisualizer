@@ -4,11 +4,11 @@
 #include <algorithm>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "../../helpers/ProgramUtilities.h"
-#include "../../helpers/ResourcesManager.h"
-#include "../../midi/MIDIUtils.h"
+#include "helpers/ProgramUtilities.h"
+#include "helpers/ResourcesManager.h"
+#include "midi/MIDIUtils.h"
 
-#include "MIDISceneLive.h"
+#include "scene/MIDISceneLive.h"
 
 
 #ifdef _WIN32

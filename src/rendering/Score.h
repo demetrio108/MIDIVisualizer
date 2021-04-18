@@ -4,7 +4,7 @@
 #include <gl3w/gl3w.h>
 #include <glm/glm.hpp>
 
-#include "ScreenQuad.h"
+#include "rendering/ScreenQuad.h"
 
 
 class Score : public ScreenQuad {

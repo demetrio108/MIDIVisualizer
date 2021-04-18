@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <iostream>
 
-#include "../helpers/ProgramUtilities.h"
-#include "Framebuffer.h"
+#include "helpers/ProgramUtilities.h"
+#include "rendering/Framebuffer.h"
 
 
 Framebuffer::Framebuffer(int width, int height, GLuint format, GLuint type, GLuint filtering, GLuint wrapping) : _width(width),  _height(height){

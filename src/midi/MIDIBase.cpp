@@ -1,4 +1,4 @@
-#include "MIDIBase.h"
+#include "midi/MIDIBase.h"
 
 MIDINote::MIDINote(short aNote, double aStart, double aDuration, short aVelocity, short aChannel, unsigned int trackId) : start(aStart), duration(aDuration), track(trackId), set(0), note(aNote), velocity(aVelocity), channel(aChannel) {
 

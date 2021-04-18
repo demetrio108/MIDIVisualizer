@@ -1,5 +1,5 @@
-#include "../helpers/ProgramUtilities.h"
-#include "../helpers/ResourcesManager.h"
+#include "helpers/ProgramUtilities.h"
+#include "helpers/ResourcesManager.h"
 #include <cstring>
 #include <glm/gtc/matrix_transform.hpp>
 #include <imgui/imgui.h>
@@ -8,8 +8,8 @@
 #include <stdio.h>
 #include <vector>
 
-#include "Renderer.h"
-#include "scene/MIDIScene.h"
+#include "rendering/Renderer.h"
+
 #include "scene/MIDISceneFile.h"
 #include "scene/MIDISceneLive.h"
 

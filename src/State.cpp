@@ -1,7 +1,7 @@
 
 #include "State.h"
 #include "scene/MIDIScene.h"
-#include "../helpers/ResourcesManager.h"
+#include "helpers/ResourcesManager.h"
 
 #include <iostream>
 #include <fstream>
