@@ -14,6 +14,21 @@
 #include <iostream>
 #include <algorithm>
 
+#ifdef MIDIVIZ_SUPPORT_AUDIO
+#include <minisdl/minisdl_audio.h>
+
+#define TSF_IMPLEMENTATION
+#include <tsf/tsf.h>
+#endif
+
+bool audioOutputSupported(){
+#ifdef MIDIVIZ_SUPPORT_AUDIO
+	return true;
+#else
+	return false;
+#endif
+}
+
 #define INITIAL_SIZE_WIDTH 1280
 #define INITIAL_SIZE_HEIGHT 600
 
@@ -21,6 +36,7 @@ void printVersion(){
 	std::cout << "MIDIVisualizer v" << MIDIVIZ_VERSION_MAJOR << "." << MIDIVIZ_VERSION_MINOR << std::endl;
 	std::cout << "* Built on " << __DATE__ << ", at " << __TIME__ << "." << std::endl;
 	std::cout << "* Video export with ffmpeg is " << (Recorder::videoExportSupported() ? "enabled" : "disabled") << "." << std::endl;
+	std::cout << "* Audio output with SDL and TSF is " << (audioOutputSupported() ? "enabled" : "disabled") << "." << std::endl;
 }
 
 void printHelp(){
@@ -217,7 +233,24 @@ int main( int argc, char** argv) {
 		std::cerr << "[ERROR]: OpenGL 3.2 not supported\n" << std::endl;
 		return -1;
 	}
+#ifdef MIDIVIZ_SUPPORT_AUDIO
+	SDL_AudioSpec audioOutputSpec;
+	audioOutputSpec.freq = 44100;
+	audioOutputSpec.format = AUDIO_F32;
+	audioOutputSpec.channels = 2;
+	audioOutputSpec.samples = 4096;
+	//audioOutputSpec.callback = ...;
 
+	// Initialize the audio system
+	if(SDL_AudioInit(TSF_NULL) < 0){
+		std::cerr << "[ERROR]: Unable to initialize audio.\n" << std::endl;
+		return 3;
+	}
+	if(SDL_OpenAudio(&audioOutputSpec, TSF_NULL) < 0){
+		std::cerr << "[ERROR]: Unable to open requested audio output\n" << std::endl;
+		return 3;
+	}
+#endif
 	// We need a scope to ensure the renderer is deleted before the OpenGL context is destroyed.
 	{
 
