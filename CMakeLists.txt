@@ -10,6 +10,8 @@ endif()
 # Need to look for local FindFFMPEG.cmake script, as none are provided by default.
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/libs")
 
+option(MIDIVIZ_ENABLE_AUDIO "Enable audio output if possible" ON)
+option(MIDIVIZ_ENABLE_VIDEO "Enable video export if possible (requires FFMPEG)" ON)
 
 ## Dependencies
 
@@ -36,7 +38,30 @@ find_package(OpenGL REQUIRED)
 # Add FFMPEG if available
 find_package(FFMPEG)
 
+# TSF dependencies.
+if(APPLE)
+	list(APPEND TSF_LIBRARIES
+		"-framework CoreServices"
+		"-framework CoreAudio"
+		"-framework AudioUnit")
+endif()
+	
+if(UNIX AND NOT APPLE)
+	find_package(Threads REQUIRED)
+	list(APPEND TSF_LIBRARIES "${CMAKE_THREAD_LIBS_INIT}")
+
+	find_library(MATH_LIBRARY m)
+	list(APPEND TSF_LIBRARIES "${MATH_LIBRARY}")
+
+	if (CMAKE_DL_LIBS)
+		list(APPEND TSF_LIBRARIES "${CMAKE_DL_LIBS}")
+	endif()
+endif()
+
+
 ## Projects
+
+
 
 # Helper packager
 
@@ -62,6 +87,14 @@ file(GLOB GlmSources
 	"src/libs/glm/*/*.inl"
 )
 
+if(MIDIVIZ_ENABLE_AUDIO)
+	set(TsfSources
+		"src/libs/tsf/tsf.h" 
+		"src/libs/minisdl/minisdl_audio.h" 
+		"src/libs/minisdl/minisdl_audio.c" 
+	)
+endif()
+
 set(LibSources 
 	"src/libs/gl3w/gl3w.cpp"
 	"src/libs/gl3w/gl3w.h"
@@ -86,6 +119,7 @@ set(LibSources
 	"src/libs/stb_image/stb_image_resize.h"
 	"src/libs/stb_image_write/stb_image_write.h" 
 	${GlmSources}
+	${TsfSources}
 )
 
 set(Sources
@@ -145,9 +179,16 @@ target_include_directories(MIDIVisualizer PRIVATE src/libs/ src/helpers/)
 target_link_libraries(MIDIVisualizer PRIVATE nfd glfw RtMidi17 ${GLFW_LIBRARIES} ${OPENGL_gl_LIBRARY})
 add_dependencies(MIDIVisualizer Packaging)
 
+# Add TSF dependencies if requested.
+if(MIDIVIZ_ENABLE_AUDIO)
+	message(STATUS "MIDIVisualizer: enabling audio output (requested).")
+	target_compile_definitions(MIDIVisualizer PRIVATE MIDIVIZ_SUPPORT_AUDIO)
+	target_link_libraries(MIDIVisualizer PRIVATE ${TSF_LIBRARIES})
+endif()
+
 # Add dependency to FFmpeg if available.
-if(FFMPEG_FOUND)
-	message(STATUS "FFmpeg found, enabling video export.")
+if(MIDIVIZ_ENABLE_VIDEO AND FFMPEG_FOUND)
+	message(STATUS "MIDIVisualizer: enabling video export (requested and FFmpeg found).")
 	target_compile_definitions(MIDIVisualizer PRIVATE MIDIVIZ_SUPPORT_VIDEO)
 	target_include_directories(MIDIVisualizer PRIVATE ${FFMPEG_INCLUDE_DIRS})
 	target_link_libraries(MIDIVisualizer PRIVATE ${FFMPEG_LIBRARIES})
